@@ -20,3 +20,36 @@ Biblioteca para trabalhar com Recursos da Amazon AWS no Delphi
 ```
 ../AWS4D/src
 ```
+
+## ⚡️ Como utilizar para Enviar uma Imagem para o AWS S3
+
+```pascal
+uses
+  AWS4D;
+
+implementation
+
+
+const
+  //Informações encontradas na plataforma do juno em integrações
+  AccountKey = 'Chave da sua Credencial IAM';
+  AccountName = 'Name da sua Credencial IAM ';
+  StorageEndPoint = 'EndPoint da Region do seu Bucket S3 Ex: s3.sa-east-1.amazonaws.com';
+  Bucket = 'Nome do seu bucket s3'
+
+  TAWS4D
+      .New
+        .S3
+          .Credential
+            .AccountKey(AccountKey)
+            .AccountName(AccountName)
+            .StorageEndPoint(StorageEndPoint)
+            .Bucket(Bucket)
+          .&End
+          .SendFile
+            .FileName('nome do arquivo para ser salvo no s3 incluindo a extensão')
+            .ContentType('content type do arquivo Ex: 'image/jpeg')
+            .FileStream('Variavel do Tipo TBytesStream do seu arquivo e/ou Componente TImage')
+          .Send
+        .ToString; //Retornar o Endereço do Arquivo no S3 para você acessar diretamente
+```
