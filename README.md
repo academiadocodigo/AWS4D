@@ -21,7 +21,8 @@ Biblioteca para trabalhar com Recursos da Amazon AWS no Delphi
 ../AWS4D/src
 ```
 
-## ⚡️ Como utilizar para Enviar uma Imagem para o AWS S3 / Pode ser usado para qualquer tipo de arquivo, basta alterar o ContentType
+## ⚡️ Como utilizar para Enviar uma Imagem para o AWS S3
+#### Pode ser usado para qualquer tipo de arquivo, basta alterar o ContentType
 
 ```pascal
 uses
@@ -55,7 +56,8 @@ const
 ```
 
 
-## ⚡️ Como utilizar para Baixar uma Imagem para o AWS S3 / Pode ser usado para qualquer arquivo, basta no final chamar a função ToBytesStream no lugar do FromImage e tratar o Stream da forma que desejar
+## ⚡️ Como utilizar para Baixar uma Imagem para o AWS S3
+#### Pode ser usado para qualquer arquivo, basta no final chamar a função ToBytesStream no lugar do FromImage e tratar o Stream da forma que desejar
 
 ```pascal
 uses
