@@ -21,7 +21,7 @@ Biblioteca para trabalhar com Recursos da Amazon AWS no Delphi
 ../AWS4D/src
 ```
 
-## ⚡️ Como utilizar para Enviar uma Imagem para o AWS S3
+## ⚡️ Como utilizar para Enviar uma Imagem para o AWS S3 / Pode ser usado para qualquer tipo de arquivo, basta alterar o ContentType
 
 ```pascal
 uses
@@ -33,7 +33,7 @@ implementation
 const
   //Informações geradas no AWS Console
   AccountKey = 'Chave da sua Credencial IAM';
-  AccountName = 'Name da sua Credencial IAM ';
+  AccountName = 'Name da sua Credencial IAM';
   StorageEndPoint = 'EndPoint da Region do seu Bucket S3 Ex: s3.sa-east-1.amazonaws.com';
   Bucket = 'Nome do seu bucket s3'
 
@@ -52,4 +52,36 @@ const
             .FileStream('Variavel do Tipo TBytesStream do seu arquivo e/ou Componente TImage')
           .Send
         .ToString; //Retornar o Endereço do Arquivo no S3 para você acessar diretamente
+```
+
+
+## ⚡️ Como utilizar para Baixar uma Imagem para o AWS S3 / Pode ser usado para qualquer arquivo, basta no final chamar a função ToBytesStream no lugar do FromImage e tratar o Stream da forma que desejar
+
+```pascal
+uses
+  AWS4D;
+
+implementation
+
+
+const
+  //Informações geradas no AWS Console
+  AccountKey = 'Chave da sua Credencial IAM';
+  AccountName = 'Name da sua Credencial IAM';
+  StorageEndPoint = 'EndPoint da Region do seu Bucket S3 Ex: s3.sa-east-1.amazonaws.com';
+  Bucket = 'Nome do seu bucket s3'
+
+  TAWS4D
+      .New
+        .S3
+          .Credential
+            .AccountKey(AccountKey)
+            .AccountName(AccountName)
+            .StorageEndPoint(StorageEndPoint)
+            .Bucket(Bucket)
+          .&End
+          .GetFile
+            .FileName('Endereço completo do arquivo na aws')
+          .Get
+        .FromImage(aImage); //Carrega automaticamente o Retorno dentro de um TImage
 ```
