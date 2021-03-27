@@ -31,7 +31,7 @@ implementation
 
 
 const
-  //Informações encontradas na plataforma do juno em integrações
+  //Informações geradas no AWS Console
   AccountKey = 'Chave da sua Credencial IAM';
   AccountName = 'Name da sua Credencial IAM ';
   StorageEndPoint = 'EndPoint da Region do seu Bucket S3 Ex: s3.sa-east-1.amazonaws.com';
