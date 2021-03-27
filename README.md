@@ -13,3 +13,10 @@ Biblioteca para trabalhar com Recursos da Amazon AWS no Delphi
 ## ⚙️ Instalação 
 
 *Pré requisitos: Delphi XE2
+
+
+* **Instlação manual**: Adicione as seguintes pastas ao seu projeto, em *Project > Options > Resource Compiler > Directories and Conditionals > Include file search path*
+
+```
+../AWS4D/src
+```
