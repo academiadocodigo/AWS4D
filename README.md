@@ -11,3 +11,5 @@ Biblioteca para trabalhar com Recursos da Amazon AWS no Delphi
 
 
 ## ⚙️ Instalação 
+
+*Pré requisitos: Delphi XE2
