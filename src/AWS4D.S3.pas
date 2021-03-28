@@ -21,7 +21,7 @@ type
       function SendFile : iAWS4DS3SendFile;
       function GetFile : iAWS4DS3GetFile;
       function Credential : iAWS4DCredential;
-      function ToString : String;
+      function ToString : String; reintroduce;
       function ToBytesStream : TBytesStream;
       function FromImage(var aValue : TImage) : iAWS4DS3;
       function Content ( aValue : String ) :  iAWS4DS3; overload;
