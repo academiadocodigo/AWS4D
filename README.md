@@ -40,13 +40,13 @@ const
 
   TAWS4D
       .New
-        .S3
-          .Credential
+        .Credential
             .AccountKey(AccountKey)
             .AccountName(AccountName)
             .StorageEndPoint(StorageEndPoint)
             .Bucket(Bucket)
           .&End
+        .S3
           .SendFile
             .FileName('nome do arquivo para ser salvo no s3 incluindo a extensão')
             .ContentType('content type do arquivo Ex: 'image/jpeg')
@@ -75,13 +75,13 @@ const
 
   TAWS4D
       .New
-        .S3
-          .Credential
+        .Credential
             .AccountKey(AccountKey)
             .AccountName(AccountName)
             .StorageEndPoint(StorageEndPoint)
             .Bucket(Bucket)
           .&End
+        .S3
           .GetFile
             .FileName('Endereço completo do arquivo na aws')
           .Get
