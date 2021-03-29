@@ -15,11 +15,11 @@ type
   iAWS4D = interface
     ['{26E15418-DE77-455D-AF27-8EECF7C6A64B}']
     function S3 : iAWS4DS3;
+    function Credential : iAWS4DCredential;
   end;
 
   iAWS4DS3 = interface
    ['{9D596CD1-33F8-438B-BDB8-A65766354680}']
-    function Credential : iAWS4DCredential;
     function SendFile : iAWS4DS3SendFile;
     function GetFile : iAWS4DS3GetFile;
     function ToString : String;
@@ -27,6 +27,7 @@ type
     function FromImage(var aValue : TImage) : iAWS4DS3;
     function Content ( aValue : String ) :  iAWS4DS3; overload;
     function Content ( var aValue : TBytesStream ) : iAWS4DS3; overload;
+    function &End : iAWS4D;
   end;
 
   iAWS4DCredential = interface
@@ -39,7 +40,7 @@ type
     function AccountName : String; overload;
     function StorageEndPoint : String; overload;
     function Bucket : String; overload;
-    function &End : iAWS4DS3;
+    function &End : iAWS4D;
   end;
 
   iAWS4DS3GetFile = interface

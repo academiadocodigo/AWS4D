@@ -8,24 +8,25 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TAWS4DS3 = class(TInterfacedObject,
-                          iAWS4DS3)
+  TAWS4DS3 = class(TInterfacedObject, iAWS4DS3)
     private
+      [weak]
+      FParent : iAWS4D;
       FContent : String;
       FContentByteStream : TBytesStream;
       FCredencial : iAWS4DCredential;
     public
-      constructor Create;
+      constructor Create(aParent : iAWS4D);
       destructor Destroy; override;
-      class function New : iAWS4DS3;
+      class function New(aParent : iAWS4D) : iAWS4DS3;
       function SendFile : iAWS4DS3SendFile;
       function GetFile : iAWS4DS3GetFile;
-      function Credential : iAWS4DCredential;
       function ToString : String; reintroduce;
       function ToBytesStream : TBytesStream;
       function FromImage(var aValue : TImage) : iAWS4DS3;
       function Content ( aValue : String ) :  iAWS4DS3; overload;
       function Content ( var aValue : TBytesStream ) : iAWS4DS3; overload;
+      function &End : iAWS4D;
    end;
 
 implementation
@@ -55,23 +56,20 @@ begin
   FContent := aValue;
 end;
 
+function TAWS4DS3.&End: iAWS4D;
+begin
+  Result := FParent;
+end;
+
 function TAWS4DS3.Content(var aValue: TBytesStream): iAWS4DS3;
 begin
   Result := Self;
   FContentByteStream := aValue;
 end;
 
-constructor TAWS4DS3.Create;
+constructor TAWS4DS3.Create(aParent : iAWS4D);
 begin
-
-end;
-
-function TAWS4DS3.Credential: iAWS4DCredential;
-begin
-  if not Assigned(FCredencial) then
-    FCredencial := TAWS4DCredential.New(Self);
-
-  Result := FCredencial;
+  FParent := aParent;
 end;
 
 destructor TAWS4DS3.Destroy;
@@ -93,14 +91,14 @@ begin
   Result := TAWS4DS3GetFile.New(Self);
 end;
 
-class function TAWS4DS3.New: iAWS4DS3;
+class function TAWS4DS3.New(aParent : iAWS4D) : iAWS4DS3;
 begin
-  Result := Self.Create;
+  Result := Self.Create(aParent);
 end;
 
 function TAWS4DS3.SendFile: iAWS4DS3SendFile;
 begin
-  Result := TAWS4DS3SendFile.New(Self);
+  Result := TAWS4DS3SendFile.New(Self);;
 end;
 
 

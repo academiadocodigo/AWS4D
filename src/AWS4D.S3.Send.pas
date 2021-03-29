@@ -96,13 +96,13 @@ begin
   Header := TStringList.Create;
   try
     Header.Values['Content-Type'] := FContentType;
-    AmazonConnectionInfo1.AccountKey := FParent.Credential.AccountKey;
-    AmazonConnectionInfo1.AccountName := FParent.Credential.AccountName;
-    AmazonConnectionInfo1.StorageEndpoint := FParent.Credential.StorageEndPoint;
+    AmazonConnectionInfo1.AccountKey := FParent.&End.Credential.AccountKey;
+    AmazonConnectionInfo1.AccountName := FParent.&End.Credential.AccountName;
+    AmazonConnectionInfo1.StorageEndpoint := FParent.&End.Credential.StorageEndPoint;
     AmazonConnectionInfo1.UseDefaultEndpoints := False;
 
     if StorageService.UploadObject(
-        FParent.Credential.Bucket,
+        FParent.&End.Credential.Bucket,
         FFileName,
         FFileStream.Bytes,
         False,
@@ -111,7 +111,7 @@ begin
         amzbaPublicReadWrite,
         CloudResponse
     ) then
-      FParent.Content('https://' + FParent.Credential.Bucket + '.' + FParent.Credential.StorageEndPoint + '/' + FFileName);
+      FParent.Content('https://' + FParent.&End.Credential.Bucket + '.' + FParent.&End.Credential.StorageEndPoint + '/' + FFileName);
   finally
     Header.Free;
     CloudResponse.Free;

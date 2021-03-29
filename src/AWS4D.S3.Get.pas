@@ -64,13 +64,13 @@ begin
   try
     if Trim(FFileName) <> '' then
     begin
-      AmazonConnectionInfo1.AccountKey := FParent.Credential.AccountKey;
-      AmazonConnectionInfo1.AccountName := FParent.Credential.AccountName;
-      AmazonConnectionInfo1.StorageEndpoint := FParent.Credential.StorageEndPoint;
+      AmazonConnectionInfo1.AccountKey := FParent.&End.Credential.AccountKey;
+      AmazonConnectionInfo1.AccountName := FParent.&End.Credential.AccountName;
+      AmazonConnectionInfo1.StorageEndpoint := FParent.&End.Credential.StorageEndPoint;
       AmazonConnectionInfo1.UseDefaultEndpoints := False;
 
       if StorageService.GetObject(
-        FParent.Credential.Bucket,
+        FParent.&End.Credential.Bucket,
         FFileName,
         ByteImage,
         CloudResponse
