@@ -3,8 +3,13 @@ unit AWS4D.Interfaces;
 interface
 
 uses
+
   System.Classes,
-  Vcl.ExtCtrls;
+  {$IFDEF HAS_FMX}
+    FMX.Objects;
+  {$ELSE}
+    Vcl.ExtCtrls;
+  {$ENDIF}
 
 type
   iAWS4DS3 = interface;

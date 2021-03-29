@@ -5,7 +5,11 @@ interface
 uses
   System.Classes,
   AWS4D.Interfaces,
-  Vcl.ExtCtrls;
+  {$IFDEF HAS_FMX}
+    FMX.Objects;
+  {$ELSE}
+    Vcl.ExtCtrls;
+  {$ENDIF}
 
 type
   TAWS4DS3 = class(TInterfacedObject, iAWS4DS3)
@@ -83,7 +87,12 @@ end;
 function TAWS4DS3.FromImage(var aValue: TImage): iAWS4DS3;
 begin
   Result := Self;
-  aValue.Picture.LoadFromStream(FContentByteStream);
+  {$IFDEF HAS_FMX}
+    aValue.Bitmap.LoadFromStream(FContentByteStream);
+  {$ELSE}
+    aValue.Picture.LoadFromStream(FContentByteStream);
+  {$ENDIF}
+
 end;
 
 function TAWS4DS3.GetFile: iAWS4DS3GetFile;

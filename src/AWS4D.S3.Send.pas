@@ -5,7 +5,11 @@ interface
 uses
   System.Classes,
   AWS4D.Interfaces,
-  Vcl.ExtCtrls;
+  {$IFDEF HAS_FMX}
+    FMX.Objects;
+  {$ELSE}
+    Vcl.ExtCtrls;
+  {$ENDIF}
 
 type
   TAWS4DS3SendFile = class(TInterfacedObject, iAWS4DS3SendFile)
@@ -73,7 +77,12 @@ begin
   if not Assigned(FFileStream) then
     FFileStream := TBytesStream.Create();
 
-  aValue.Picture.SaveToStream(FFileStream);
+  {$IFDEF HAS_FMX}
+    aValue.Bitmap.SaveToStream(FFileStream);
+  {$ELSE}
+    aValue.Picture.SaveToStream(FFileStream);
+  {$ENDIF}
+
 end;
 
 class function TAWS4DS3SendFile.New(
