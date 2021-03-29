@@ -10,15 +10,15 @@ type
   TAWS4DCredential = class(TInterfacedObject, iAWS4DCredential)
     private
       [weak]
-      FParent : iAWS4DS3;
+      FParent : iAWS4D;
       FAccountKey : String;
       FAccountName : String;
       FStorageEndPoint : String;
       FBucket : String;
     public
-      constructor Create (aParent : iAWS4DS3);
+      constructor Create (aParent : iAWS4D);
       destructor Destroy; override;
-      class function New(aParent : iAWS4DS3) : iAWS4DCredential; overload;
+      class function New(aParent : iAWS4D) : iAWS4DCredential; overload;
       function AccountKey( aValue : String ) : iAWS4DCredential; overload;
       function AccountName( aValue : String ) :  iAWS4DCredential; overload;
       function StorageEndPoint( aValue : String ) : iAWS4DCredential;  overload;
@@ -27,7 +27,7 @@ type
       function AccountName : String; overload;
       function StorageEndPoint : String; overload;
       function Bucket : String; overload;
-      function &End : iAWS4DS3;
+      function &End : iAWS4D;
   end;
 
 implementation
@@ -53,12 +53,12 @@ begin
   FBucket := aValue;
 end;
 
-function TAWS4DCredential.&End: iAWS4DS3;
+function TAWS4DCredential.&End: iAWS4D;
 begin
   Result := FParent;
 end;
 
-constructor TAWS4DCredential.Create(aParent: iAWS4DS3);
+constructor TAWS4DCredential.Create(aParent : iAWS4D);
 begin
   FParent := aParent;
 end;
@@ -69,8 +69,7 @@ begin
   inherited;
 end;
 
-class function TAWS4DCredential.New(
-  aParent: iAWS4DS3): iAWS4DCredential;
+class function TAWS4DCredential.New(aParent : iAWS4D) : iAWS4DCredential;
 begin
   Result := Self.Create(aParent);
 end;
