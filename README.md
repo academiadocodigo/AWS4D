@@ -1,8 +1,16 @@
 <p align="center">
-  <a href="https://www.pngitem.com/pimgs/m/175-1759149_aws-amazon-hd-png-download.png">
-    <img alt="AWS" height="150" src="https://www.pngitem.com/pimgs/m/175-1759149_aws-amazon-hd-png-download.png">
+  <a href="https://github.com/bittencourtthulio/AWS4D/blob/master/assets/logo.fw.png">
+    <img alt="router4d" src="https://github.com/bittencourtthulio/AWS4D/blob/master/assets/logo.fw.png">
   </a>  
-</p><br>
+</p>
+<br>
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/bittencourtthulio/AWS4D?style=flat-square">
+  <img src="https://img.shields.io/github/stars/bittencourtthulio/AWS4D?style=flat-square">
+  <img src="https://img.shields.io/github/contributors/bittencourtthulio/AWS4D?color=orange&style=flat-square">
+</p>
+
+
 <p align="center">
   <b>AWS4Delphi</b> é uma biblioteca Delphi desenvolvida para consumo dos recursos da API de serviços da <a href="https://aws.com/">AWS</a>, dando a possibilidade de integração simples com diversos serviços. Atualmente homologado apenas o envio de arquivos para o AWS S3, porém com possibilidade de expansão, fique a vontade para enviar suas contribuições.
 
