@@ -8,6 +8,9 @@
   <img src="https://img.shields.io/github/v/release/bittencourtthulio/AWS4D?style=flat-square">
   <img src="https://img.shields.io/github/stars/bittencourtthulio/AWS4D?style=flat-square">
   <img src="https://img.shields.io/github/contributors/bittencourtthulio/AWS4D?color=orange&style=flat-square">
+   <img src="https://tokei.rs/b1/github/bittencourtthulio/AWS4D?color=red&category=lines">
+  <img src="https://tokei.rs/b1/github/bittencourtthulio/AWS4D?color=green&category=code">
+  <img src="https://tokei.rs/b1/github/bittencourtthulio/AWS4D?color=yellow&category=files">
 </p>
 
 
