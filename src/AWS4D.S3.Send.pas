@@ -76,7 +76,6 @@ begin
   Result := Self;
   if not Assigned(FFileStream) then
     FFileStream := TBytesStream.Create();
-
   {$IFDEF HAS_FMX}
     aValue.Bitmap.SaveToStream(FFileStream);
   {$ELSE}

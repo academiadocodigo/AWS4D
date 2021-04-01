@@ -32,9 +32,10 @@ requires
 
 contains
   AWS4D.Interfaces in 'src\AWS4D.Interfaces.pas',
-  AWS4D.Amazon.S3.Credencial in 'src\AWS4D.Amazon.S3.Credencial.pas',
-  AWS4D.Amazon.S3.Get in 'src\AWS4D.Amazon.S3.Get.pas',
-  AWS4D.Amazon.S3 in 'src\AWS4D.Amazon.S3.pas',
-  AWS4D.Amazon.S3.Send in 'src\AWS4D.Amazon.S3.Send.pas';
+  AWS4D in 'src\AWS4D.pas',
+  AWS4D.S3.Credencial in 'src\AWS4D.S3.Credencial.pas',
+  AWS4D.S3.Get in 'src\AWS4D.S3.Get.pas',
+  AWS4D.S3 in 'src\AWS4D.S3.pas',
+  AWS4D.S3.Send in 'src\AWS4D.S3.Send.pas';
 
 end.
