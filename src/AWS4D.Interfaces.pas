@@ -4,6 +4,7 @@ interface
 
 uses
   System.Classes,
+  Jpeg,
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}
@@ -31,6 +32,7 @@ type
     function FromImage(var aValue : TImage) : iAWS4DS3;
     function Content ( aValue : String ) :  iAWS4DS3; overload;
     function Content ( var aValue : TBytesStream ) : iAWS4DS3; overload;
+    function ContentByteStream : TBytesStream;
     function &End : iAWS4D;
   end;
 
@@ -50,6 +52,7 @@ type
   iAWS4DS3GetFile = interface
     ['{65859963-94C5-43F8-A777-4830696DC105}']
     function FileName ( aValue : String ) : iAWS4DS3GetFile;
+    function ContentType( aValue : String ) : iAWS4DS3GetFile;
     function Get : iAWS4DS3;
   end;
 

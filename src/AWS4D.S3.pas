@@ -5,6 +5,7 @@ interface
 uses
   System.Classes,
   AWS4D.Interfaces,
+  Jpeg,
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}
@@ -30,6 +31,7 @@ type
       function FromImage(var aValue : TImage) : iAWS4DS3;
       function Content ( aValue : String ) :  iAWS4DS3; overload;
       function Content ( var aValue : TBytesStream ) : iAWS4DS3; overload;
+      function ContentByteStream : TBytesStream;
       function &End : iAWS4D;
    end;
 
@@ -71,9 +73,15 @@ begin
   FContentByteStream := aValue;
 end;
 
+function TAWS4DS3.ContentByteStream: TBytesStream;
+begin
+  Result := FContentByteStream;
+end;
+
 constructor TAWS4DS3.Create(aParent : iAWS4D);
 begin
   FParent := aParent;
+  FContentByteStream := TBytesStream.Create;
 end;
 
 destructor TAWS4DS3.Destroy;
@@ -85,14 +93,21 @@ begin
 end;
 
 function TAWS4DS3.FromImage(var aValue: TImage): iAWS4DS3;
+var
+  FJpegImage : TJpegImage;
 begin
   Result := Self;
-  {$IFDEF HAS_FMX}
-    aValue.Bitmap.LoadFromStream(FContentByteStream);
-  {$ELSE}
-    aValue.Picture.LoadFromStream(FContentByteStream);
-  {$ENDIF}
-
+  FJpegImage := TJpegImage.Create;
+  try
+    FJpegImage.LoadFromStream(FContentByteStream);
+    {$IFDEF HAS_FMX}
+      aValue.Bitmap.LoadFromStream(FContentByteStream);
+    {$ELSE}
+      aValue.Picture.Assign(FJpegImage);
+    {$ENDIF}
+  finally
+    FJpegImage.Free;
+  end;
 end;
 
 function TAWS4DS3.GetFile: iAWS4DS3GetFile;

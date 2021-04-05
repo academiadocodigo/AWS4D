@@ -11,11 +11,13 @@ type
       [weak]
       FParent : iAWS4DS3;
       FFileName : String;
+      FContentType : String;
     public
       constructor Create( aParent : iAWS4DS3);
       destructor Destroy; override;
       class function New ( aParent : iAWS4DS3) : iAWS4DS3GetFile;
       function FileName ( aValue : String ) : iAWS4DS3GetFile;
+      function ContentType( aValue : String ) : iAWS4DS3GetFile;
       function Get : iAWS4DS3;
   end;
 
@@ -25,9 +27,17 @@ uses
   System.Classes,
   System.StrUtils,
   Data.Cloud.AmazonAPI,
-  Data.Cloud.CloudAPI, System.SysUtils;
+  Data.Cloud.CloudAPI,
+  System.SysUtils,
+  Jpeg;
 
 { TBind4DAmazonS3Get }
+
+function TAWS4DS3GetFile.ContentType(aValue: String): iAWS4DS3GetFile;
+begin
+  Result := Self;
+  FContentType := aValue;
+end;
 
 constructor TAWS4DS3GetFile.Create(aParent: iAWS4DS3);
 begin
@@ -48,7 +58,6 @@ end;
 
 function TAWS4DS3GetFile.Get: iAWS4DS3;
 var
-  ByteImage: TBytesStream;
   AmazonConnectionInfo1: TAmazonConnectionInfo;
   StorageService : TAmazonStorageService;
   CloudResponse : TCloudResponseInfo;
@@ -57,7 +66,6 @@ begin
   AmazonConnectionInfo1 := TAmazonConnectionInfo.Create(nil);
   StorageService := TAmazonStorageService.Create(AmazonConnectionInfo1);
   CloudResponse := TCloudResponseInfo.Create;
-  ByteImage := TBytesStream.Create();
   FFileName := ReverseString(FFileName);
   FFileName := Copy(FFileName, 0, Pos('/', FFileName)-1);
   FFileName := ReverseString(FFileName);
@@ -69,13 +77,13 @@ begin
       AmazonConnectionInfo1.StorageEndpoint := FParent.&End.Credential.StorageEndPoint;
       AmazonConnectionInfo1.UseDefaultEndpoints := False;
 
-      if StorageService.GetObject(
+      if not StorageService.GetObject(
         FParent.&End.Credential.Bucket,
         FFileName,
-        ByteImage,
+        FParent.ContentByteStream,
         CloudResponse
       ) then
-        FParent.Content(ByteImage);
+        raise Exception.Create(CloudResponse.StatusMessage);
     end;
   finally
     CloudResponse.Free;

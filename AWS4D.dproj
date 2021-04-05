@@ -77,6 +77,8 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="vcl.dcp"/>
+        <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="src\AWS4D.Interfaces.pas"/>
         <DCCReference Include="src\AWS4D.pas"/>
         <DCCReference Include="src\AWS4D.S3.Credencial.pas"/>

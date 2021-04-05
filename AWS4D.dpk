@@ -28,7 +28,9 @@ package AWS4D;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl,
+  xmlrtl;
 
 contains
   AWS4D.Interfaces in 'src\AWS4D.Interfaces.pas',
