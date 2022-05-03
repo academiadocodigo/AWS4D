@@ -117,7 +117,8 @@ begin
         nil,
         Header,
         amzbaPublicReadWrite,
-        CloudResponse
+        CloudResponse,
+        FParent.&End.Credential.BucketRegion
     ) then
       FParent.Content('https://' + FParent.&End.Credential.Bucket + '.' + FParent.&End.Credential.StorageEndPoint + '/' + FFileName);
   finally

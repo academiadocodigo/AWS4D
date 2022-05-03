@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes,
-  Jpeg,
+  Vcl.Imaging.Jpeg,
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}
@@ -42,9 +42,11 @@ type
     function AccountName( aValue : String ) :  iAWS4DCredential; overload;
     function StorageEndPoint( aValue : String ) : iAWS4DCredential; overload;
     function Bucket ( aValue : String ) : iAWS4DCredential; overload;
+    function BucketRegion ( aValue : String) : iAWS4DCredential; overload;
     function AccountKey : String; overload;
     function AccountName : String; overload;
     function StorageEndPoint : String; overload;
+    function BucketRegion : String; overload;
     function Bucket : String; overload;
     function &End : iAWS4D;
   end;
