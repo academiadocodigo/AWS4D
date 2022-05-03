@@ -3,7 +3,7 @@ interface
 uses
   System.Classes,
   AWS4D.Interfaces,
-  Jpeg,
+  Vcl.Imaging.Jpeg,
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}

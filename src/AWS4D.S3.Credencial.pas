@@ -15,6 +15,7 @@ type
       FAccountName : String;
       FStorageEndPoint : String;
       FBucket : String;
+      FBucketRegion : String;
     public
       constructor Create (aParent : iAWS4D);
       destructor Destroy; override;
@@ -23,10 +24,12 @@ type
       function AccountName( aValue : String ) :  iAWS4DCredential; overload;
       function StorageEndPoint( aValue : String ) : iAWS4DCredential;  overload;
       function Bucket ( aValue : String ) : iAWS4DCredential; overload;
+      function BucketRegion ( aValue : String) : iAWS4DCredential; overload;
       function AccountKey : String; overload;
       function AccountName : String; overload;
       function StorageEndPoint : String; overload;
       function Bucket : String; overload;
+      function BucketRegion : String; overload;
       function &End : iAWS4D;
   end;
 
@@ -99,6 +102,17 @@ end;
 function TAWS4DCredential.Bucket: String;
 begin
   Result := FBucket;
+end;
+
+function TAWS4DCredential.BucketRegion: String;
+begin
+  Result := FBucketRegion;
+end;
+
+function TAWS4DCredential.BucketRegion(aValue: String): iAWS4DCredential;
+begin
+  Result := Self;
+  FBucketRegion := aValue;
 end;
 
 end.

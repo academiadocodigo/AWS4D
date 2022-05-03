@@ -29,7 +29,7 @@ uses
   Data.Cloud.AmazonAPI,
   Data.Cloud.CloudAPI,
   System.SysUtils,
-  Jpeg;
+  Vcl.Imaging.Jpeg;
 
 { TBind4DAmazonS3Get }
 
