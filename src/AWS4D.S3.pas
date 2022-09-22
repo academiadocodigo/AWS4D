@@ -1,9 +1,17 @@
 unit AWS4D.S3;
+
 interface
+
 uses
   System.Classes,
   AWS4D.Interfaces,
-  Jpeg,
+
+  {$IF CompilerVersion > 22}
+    Vcl.Imaging.jpeg,
+  {$ELSE}
+    jpeg,
+  {$IFEND}
+
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}
