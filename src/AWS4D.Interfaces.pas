@@ -4,7 +4,13 @@ interface
 
 uses
   System.Classes,
-  Jpeg,
+
+  {$IF CompilerVersion > 22}
+    Vcl.Imaging.jpeg,
+  {$ELSE}
+    jpeg,
+  {$IFEND}
+
   {$IFDEF HAS_FMX}
     FMX.Objects;
   {$ELSE}

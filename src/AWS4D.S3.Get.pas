@@ -29,7 +29,11 @@ uses
   Data.Cloud.AmazonAPI,
   Data.Cloud.CloudAPI,
   System.SysUtils,
-  Jpeg;
+  {$IF CompilerVersion > 22}
+    Vcl.Imaging.jpeg;
+  {$ELSE}
+    jpeg;
+  {$IFEND}
 
 { TBind4DAmazonS3Get }
 
